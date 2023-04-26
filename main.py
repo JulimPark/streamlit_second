@@ -20,8 +20,9 @@ test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
 if int(test_num) in list(df['시험고유번호']):
     df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
     test_answer = ast.literal_eval(df1.iat[0,5])
+    jumsu = ast.literal_eval(df1.iat[0,6])
     test_answer = [str(i) for i in test_answer]
-    st.write(f'본 시험의 문항 수는 :green[len(test_answer)]문항 입니다.')
+    st.write(f'본 시험의 문항 수는 :green[{len(test_answer)}]문항 입니다.')
     testname = df1.iat[0,1]
     st.write(f'현재 시험지는 :blue[{testname}] 입니다')
     start = st.button('시험시작')
@@ -76,7 +77,20 @@ for i in range(len(test_answer)):
 end_test = st.button('시험종료')
 
 if end_test:
-    st.write(submit_answer)
+    correct = []
+    incorrect = []
+    sum1= 0
+    for i in range(len(test_answer)):
+        if submit_answer[i] == test_answer[i]:
+            correct.append(i+1)
+            sum1 = sum1+jumsu[i]
+        else:
+            incorrect.append(i+1)
+    if sum(jumsu)==sum1:
+        st.write(f'잘 했습니다. 시험고유번호[{test_num}]의 점수는 {sum1}점 입니다.')
+    else:
+        st.write(f'시험고유번호[{test_num}]의 점수는 {sum1}점 입니다.)
+        st.write(f'틀린 문항의 번호는 {incorrect}입니다.)
     
 
     
