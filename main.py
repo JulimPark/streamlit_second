@@ -91,64 +91,36 @@ if end_test:
     else:
         st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
-    
+    csv_file = 'take_exam_online.csv'
+    if os.path.exists(csv_file):
+        # read from file
+        ddf = pd.read_csv(csv_file, index_col=False)
+    else:
+        # create empty dataframe with the right columns & dtypes
+        data_dict2={'학생이름':[],'학생HP':[],'시험고유번호':[],'시험명':[],'점수':[],'학생답':[],'맞은문항':[],'틀린문항':[],'문항별응시시간(초)':[],'총응시시간(초)':[],'응시일':[],'응시번호':[]}
+        
+        ddf = pd.DataFrame(
+            {'time': np.array([]).astype('datetime64[ns]'),
+             'Primary Air Flow Rate': np.array([], dtype=np.float64),
+             'Primary Air Temperature': np.array([], dtype=np.float64),
+             'Reference Air Temperature': np.array([], dtype=np.float64),
+             }
+        )
 
-    
-# kk = test_code.index[(test_code['시험지코드']==int(test_num))]
-
-# kk2 = test_code.iloc[kk,2]
-# question_num = int(kk2)
-
-# st.write(':green[문항 수]는 '+str(question_num)+'문항 입니다')
-
-
-
-# no1 = st.radio(
-#     '1번 문항의 정답을 입력하세요.',('1','2','3','4','5')
-# )
-# st.write(no1)
-
-
-# for i in range(0, question_num):
-#     ns = 'no'+str(i)
-#     no.append(ns)
-
-# st.write(no)
-# for i in range(0, question_num):
-#     no[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
-
-# submit = [no[i] for i in range(0,question_num)]
-# st.write(submit)
-
-
-csv_file = 'results_option1.csv'
-if os.path.exists(csv_file):
-    # read from file
-    results_option1 = pd.read_csv(csv_file, index_col=False)
-else:
-    # create empty dataframe with the right columns & dtypes
-    results_option1 = pd.DataFrame(
-        {'time': np.array([]).astype('datetime64[ns]'),
-         'Primary Air Flow Rate': np.array([], dtype=np.float64),
-         'Primary Air Temperature': np.array([], dtype=np.float64),
-         'Reference Air Temperature': np.array([], dtype=np.float64),
-         }
-    )
-
-st.write('before')
-st.dataframe(results_option1)
-
-with st.form('input_form'):
-    qavalue = st.number_input('Primary Air Flow Rate')
-    travalue = st.number_input('Primary Air Temperature')
-    trvalue = st.number_input('Reference Air Temperature')
-    clickSubmit = st.form_submit_button('Submit')
-
-if clickSubmit:
-    timestamp = datetime.datetime.now()
-    results_option1.loc[len(results_option1)] = [timestamp, qavalue, travalue, trvalue]
-    results_option1.to_csv(csv_file, index=False)
-    st.write('after')
+    st.write('before')
     st.dataframe(results_option1)
-else:
+
+    with st.form('input_form'):
+        qavalue = st.number_input('Primary Air Flow Rate')
+        travalue = st.number_input('Primary Air Temperature')
+        trvalue = st.number_input('Reference Air Temperature')
+        clickSubmit = st.form_submit_button('Submit')
+
+    if clickSubmit:
+        timestamp = datetime.datetime.now()
+        results_option1.loc[len(results_option1)] = [timestamp, qavalue, travalue, trvalue]
+        results_option1.to_csv(csv_file, index=False)
+        st.write('after')
+        st.dataframe(results_option1)
+    else:
     st.markdown("Please submit to save")
