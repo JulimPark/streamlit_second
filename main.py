@@ -17,15 +17,18 @@ stu_name = st.text_input('*:blue[이름]을 입력하세요: ', '홍길동')
 st.write('현재 응시자는 '+stu_name+'입니다')
 
 test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
-if int(test_num) in list(df['시험고유번호']):
-    df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
-    test_answer = ast.literal_eval(df1.iat[0,5])
-    jumsu = ast.literal_eval(df1.iat[0,6])
-    test_answer = [str(i) for i in test_answer]
-    st.write(f'본 시험의 문항 수는 :green[{len(test_answer)}]문항 입니다.')
-    testname = df1.iat[0,1]
-    st.write(f'현재 시험지는 :blue[{testname}] 입니다')
-    start = st.button('시험시작')
+try:
+    if int(test_num) in list(df['시험고유번호']):
+        df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
+        test_answer = ast.literal_eval(df1.iat[0,5])
+        jumsu = ast.literal_eval(df1.iat[0,6])
+        test_answer = [str(i) for i in test_answer]
+        st.write(f'본 시험의 문항 수는 :green[{len(test_answer)}]문항 입니다.')
+        testname = df1.iat[0,1]
+        st.write(f'현재 시험지는 :blue[{testname}] 입니다')
+        start = st.button('시험시작')
+except:
+    pass
 if start:
     aaa = datetime.now()
     timestamp1 = aaa.timestamp()
