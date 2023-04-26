@@ -28,21 +28,26 @@ if int(test_num) in list(df['시험고유번호']):
     start = st.button('시험시작')
 if start:
     timestamp = datetime.datetime.now()
-    submit_answer = [num for num in range(len(test_answer))]
-    for i in range(len(test_answer)):
-        if test_answer[i] in ['1','2','3','4','5']:
-            submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'),key=None)
-        elif fnmatch.fnmatch(test_answer[i],'*,*'):
-            st.write(str(i+1)+'번 문항의 정답을 입력하세요.')
-            a1 = st.checkbox('1')
-            a2 = st.checkbox('2')
-            a3 = st.checkbox('3')
-            a4 = st.checkbox('4')
-            a5 = st.checkbox('5')
-            submit_answer[i] = [a1,a2,a3,a4,a5]
-        else:
-            submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
-        
+submit_answer = [num for num in range(len(test_answer))]
+for i in range(len(test_answer)):
+    if test_answer[i] in ['1','2','3','4','5']:
+        submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'),key=None)
+    elif fnmatch.fnmatch(test_answer[i],'*,*'):
+        st.write(str(i+1)+'번 문항의 정답을 입력하세요.')
+        a1 = st.checkbox('1')
+        a2 = st.checkbox('2')
+        a3 = st.checkbox('3')
+        a4 = st.checkbox('4')
+        a5 = st.checkbox('5')
+        submit_answer[i] = [a1,a2,a3,a4,a5]
+    else:
+        submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
+
+end_test = st.button('시험종료')
+
+if end_test:
+    st.write(submit_answer)
+    
 
     
 # kk = test_code.index[(test_code['시험지코드']==int(test_num))]
