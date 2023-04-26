@@ -87,9 +87,9 @@ if end_test:
         else:
             incorrect.append(i+1)
     if sum(jumsu)==sum1:
-        st.header(f'참 잘 했습니다. :red[시험고유번호 {test_num}]의 점수는 :blue[{sum1}점] 입니다.')
+        st.header(f'참 잘 했습니다. :blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
     else:
-        st.header(f':red[시험고유번호 {test_num}]의 점수는 :blue[{sum1}점] 입니다.')
+        st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
     
 
