@@ -35,7 +35,7 @@ if int(test_num) in list(df['시험고유번호']):
         for i in range(len(test_answer)):
             if test_answer[i] in [1,2,3,4,5]:
                 submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
-            elif fnmatch.fnmatch(test_answer[i],','):
+            elif fnmatch.fnmatch(str(test_answer[i]),'*,*'):
                 submit_answer[i] = st.checkbox(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
             else:
                 submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
