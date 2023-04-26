@@ -59,8 +59,8 @@ for i in range(len(test_answer)):
         if a5==True:
             temp.append('5')
         else:
-            pass
-        submit_answer[i] = temp
+            pass    
+        submit_answer[i] = ','.join(temp)
     else:
         submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
 
