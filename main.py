@@ -19,7 +19,7 @@ st.write('현재 응시자는 '+stu_name+'입니다')
 test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
 df1 = df[df['시험고유번호']==test_num].loc[:,]
 st.write(df1)
-st.write('문항 수':,len(df1.iat[0,5])
+st.write('문항 수:',len(df1.iat[0,5])
 st.write('현재 시험지는 '+df1.iat[0,4]+'입니다')
 
 
