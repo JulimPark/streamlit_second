@@ -72,7 +72,7 @@ for i in range(len(test_answer)):
         submit_answer[i] = ','.join(temp)
     else:
         submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
-    st.divide()
+    st.divider()
         
 end_test = st.button('시험종료')
 
