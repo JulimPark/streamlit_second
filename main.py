@@ -123,17 +123,17 @@ ddf = pd.DataFrame(
 st.write('before')
 st.dataframe(results_option1)
 
-        with st.form('input_form'):
-            qavalue = st.number_input('Primary Air Flow Rate')
-            travalue = st.number_input('Primary Air Temperature')
-            trvalue = st.number_input('Reference Air Temperature')
-            clickSubmit = st.form_submit_button('Submit')
+with st.form('input_form'):
+    qavalue = st.number_input('Primary Air Flow Rate')
+    travalue = st.number_input('Primary Air Temperature')
+    trvalue = st.number_input('Reference Air Temperature')
+    clickSubmit = st.form_submit_button('Submit')
 
-        if clickSubmit:
-            timestamp = datetime.datetime.now()
-            results_option1.loc[len(results_option1)] = [timestamp, qavalue, travalue, trvalue]
-            results_option1.to_csv(csv_file, index=False)
-            st.write('after')
-            st.dataframe(results_option1)
-        else:
-            st.markdown("Please submit to save")
+if clickSubmit:
+    timestamp = datetime.datetime.now()
+    results_option1.loc[len(results_option1)] = [timestamp, qavalue, travalue, trvalue]
+    results_option1.to_csv(csv_file, index=False)
+    st.write('after')
+    st.dataframe(results_option1)
+else:
+    st.markdown("Please submit to save")
