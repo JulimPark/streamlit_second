@@ -110,8 +110,10 @@ if end_test:
         ddf = pd.read_csv(csv_file, index_col=False)
     else:
         # create empty dataframe with the right columns & dtypes
-        data_dict2={'학생이름':stu_name,'학생HP':0,'시험고유번호':test_num,'시험명':testname,'점수':sum1,'학생답':submit_answer,'맞은문항':correct,'틀린문항':incorrect,'문항별응시시간(초)':timelist,'총응시시간(초)':sum(timelist),'응시일':take_day,'응시번호':0}
+        data_dict2={'학생이름':[],'학생HP':[],'시험고유번호':[],'시험명':[],'점수':[],'학생답':[],'맞은문항':[],'틀린문항':[],'문항별응시시간(초)':[],'총응시시간(초)':[],'응시일':[],'응시번호':[]}
         ddf = pd.DataFrame(data_dict2,index=[0])
+    
+    ddf.loc[len(ddf)] = [stu_name,0,test_num,testname,sum1,submit_answer,correct,incorrect,timelist,sum(timelist),take_day,0]
     st.dataframe(ddf)
     ddf.to_csv(csv_file, index=False)
 
