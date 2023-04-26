@@ -8,7 +8,7 @@ st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
 df1 = df[df['시험고유번호']==264].loc[:,]
 st.write(df1)
-st.write(len(df1['정답']))
+st.write(len(df1.iat[0,5))
 no=[]
 
 st.title('수학클리닉:blue[🞧]필요와충분')
