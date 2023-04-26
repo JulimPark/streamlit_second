@@ -73,7 +73,7 @@ for i in range(len(test_answer)):
             st.checkbox('4')
         with checks[4]:
             st.checkbox('5')
-        submit_answer[i] = ','.join(temp)
+#         submit_answer[i] = ','.join(temp)
     else:
         submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
 st.write(checks)
