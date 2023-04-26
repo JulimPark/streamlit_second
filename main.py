@@ -18,14 +18,16 @@ stu_name = st.text_input('*:blue[이름]을 입력하세요: ', '홍길동')
 st.write('현재 응시자는 '+stu_name+'입니다')
 
 test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
-df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
-st.write(df1)
-test_answer = ast.literal_eval(df1.iat[0,5])
-st.write('문항 수:',len(test_answer))
-testname = df1.iat[0,1]
-st.write(f'현재 시험지는 *:blue[{testname}] 입니다')
+if int(test_num) in list(df['시험고유번호']):
+    df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
+    st.write(df1)
+    test_answer = ast.literal_eval(df1.iat[0,5])
+    st.write('문항 수:',len(test_answer))
+    testname = df1.iat[0,1]
+    st.write(f'현재 시험지는 *:blue[{testname}] 입니다')
 
-
+else:
+    pass
 # kk = test_code.index[(test_code['시험지코드']==int(test_num))]
 
 # kk2 = test_code.iloc[kk,2]
