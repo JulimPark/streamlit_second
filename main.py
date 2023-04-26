@@ -38,7 +38,7 @@ for i in range(len(test_answer)):
         st.write(str(i+1)+'번 문항의 정답을 입력하세요.')
         temp=[]
  
-        checks = st.columns(5)
+        checks = st.columns(5,gap="small")
         with checks[0]:
             a1 = st.checkbox('1')
             if a1==True:
@@ -69,7 +69,7 @@ for i in range(len(test_answer)):
                 temp.append('5')
             else:
                 pass    
-#         submit_answer[i] = ','.join(temp)
+        submit_answer[i] = ','.join(temp)
     else:
         submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
         
