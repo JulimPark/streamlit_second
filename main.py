@@ -4,6 +4,7 @@ import os
 import numpy as np
 import datetime
 import ast
+import fnmatch
 
 st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
@@ -32,7 +33,12 @@ if int(test_num) in list(df['시험고유번호']):
         timestamp = datetime.datetime.now()
         submit_answer = [num for num in range(len(test_answer))]
         for i in range(len(test_answer)):
-            submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
+            if test_answer[i] in [1,2,3,4,5]:
+                submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
+            elif fnmatch.fnmatch('*,*',test_answer[i]):
+                submit_answer[i] = st.checkbox(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
+            else:
+                submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
         
 else:
     pass
