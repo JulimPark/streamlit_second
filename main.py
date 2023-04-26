@@ -29,9 +29,9 @@ if int(test_num) in list(df['시험고유번호']):
     start = st.button('시험시작')
 
 if start:
-    aaa = datetime.now()
-    timestamp1 = aaa.timestamp()
-    st.write(timestamp1)
+#     aaa = datetime.now()
+#     timestamp1 = aaa.timestamp()
+#     st.write(timestamp1)
 submit_answer = [num for num in range(len(test_answer))]
 lst=('','1','2','3','4','5')
 
@@ -81,9 +81,9 @@ for i in range(len(test_answer)):
 end_test = st.button('시험종료')
 
 if end_test:
-    bbb = datetime.now()
-    timestamp2 = bbb.timestamp()
-    st.write(timestamp2)
+#     bbb = datetime.now()
+#     timestamp2 = bbb.timestamp()
+#     st.write(timestamp2)
     correct = []
     incorrect = []
     sum1= 0
@@ -99,10 +99,10 @@ if end_test:
     else:
         st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
-    remaintime = (timestamp2-timestamp1)
-    st.write(remaintime)
+#     remaintime = (timestamp2-timestamp1)
+#     st.write(remaintime)
 #     remaintime = (timestamp2-timestamp1)/len(test_answer)
-    timelist = [remaintime for i in range(len(test_answer))]
+    timelist = [60 for i in range(len(test_answer))]
     take_day = f"{bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
     csv_file = 'take_exam_online.csv'
     if os.path.exists(csv_file):
