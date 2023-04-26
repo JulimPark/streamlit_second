@@ -25,9 +25,13 @@ if int(test_num) in list(df['시험고유번호']):
     st.write('문항 수:',len(test_answer))
     testname = df1.iat[0,1]
     st.write(f'현재 시험지는 *:blue[{testname}] 입니다')
-
+    st.button('시험시작', on_click=test_start)
 else:
     pass
+
+def test_start():
+    st.write('시작')
+    
 # kk = test_code.index[(test_code['시험지코드']==int(test_num))]
 
 # kk2 = test_code.iloc[kk,2]
