@@ -81,7 +81,7 @@ for i in range(len(test_answer)):
 end_test = st.button('시험종료')
 
 if end_test:
-#     bbb = datetime.now()
+    bbb = datetime.now()
 #     timestamp2 = bbb.timestamp()
 #     st.write(timestamp2)
     correct = []
