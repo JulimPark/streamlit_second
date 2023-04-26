@@ -89,8 +89,8 @@ if end_test:
     if sum(jumsu)==sum1:
         st.write(f'잘 했습니다. 시험고유번호[{test_num}]의 점수는 {sum1}점 입니다.')
     else:
-        st.write(f'시험고유번호[{test_num}]의 점수는 {sum1}점 입니다.)
-        st.write(f'틀린 문항의 번호는 {incorrect}입니다.)
+        st.write(f'시험고유번호[{test_num}]의 점수는 {sum1}점 입니다.')
+        st.write(f'틀린 문항의 번호는 {incorrect}입니다.')
     
 
     
