@@ -29,10 +29,10 @@ if int(test_num) in list(df['시험고유번호']):
     start = st.button('시험시작')
 
 if start:
-#     aaa = datetime.now()
-#     timestamp1 = aaa.timestamp()
+    aaa = datetime.now()
+    timestamp1 = aaa.timestamp()
 #     st.write(timestamp1)
-    submit_answer = [num for num in range(len(test_answer))]
+submit_answer = [num for num in range(len(test_answer))]
 lst=('','1','2','3','4','5')
 
 for i in range(len(test_answer)):
