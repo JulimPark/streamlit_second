@@ -27,7 +27,13 @@ if int(test_num) in list(df['시험고유번호']):
     st.write('문항 수:',len(test_answer))
     testname = df1.iat[0,1]
     st.write(f'현재 시험지는 *:blue[{testname}] 입니다')
-    st.button('시험시작', on_click=test_start)
+    start = st.button('시험시작')
+    if start:
+        timestamp = datetime.datetime.now()
+        submit_answer = [num for num in range(len(test_answer))]
+        for i in range(len(test_answer)):
+            submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
+        
 else:
     pass
 
