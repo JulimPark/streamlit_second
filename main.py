@@ -90,7 +90,7 @@ if end_test:
             incorrect.append(i+1)
     if sum(jumsu)==sum1:
         st.header(f'참 잘 했습니다. :blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
-        st.write(timestamp2-timestamp1)
+        st.write(timestamp2)
         remaintime = (timestamp2-timestamp1)/len(test_answer)
         st.write(remaintime)
     else:
