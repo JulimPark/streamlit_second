@@ -46,19 +46,19 @@ for i in range(len(test_answer)):
             else:
                 pass
         with checks[1]:
-           a2 = st.checkbox('2')
+            a2 = st.checkbox('2')
             if a2==True:
                 temp.append('2')
             else:
                 pass
         with checks[2]:
-           a3 = st.checkbox('3')
+            a3 = st.checkbox('3')
             if a3==True:
                 temp.append('3')
             else:
                 pass
         with checks[3]:
-           a4 = st.checkbox('4')
+            a4 = st.checkbox('4')
             if a4==True:
                 temp.append('4')
             else:
