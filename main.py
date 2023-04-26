@@ -27,8 +27,8 @@ if int(test_num) in list(df['시험고유번호']):
     st.write(f'현재 시험지는 :blue[{testname}] 입니다')
     start = st.button('시험시작')
 if start:
-    timestamp1 = (datetime.now()).timestamp()
-    
+    aaa = datetime.now()
+    timestamp1 = aaa.timestamp()
 submit_answer = [num for num in range(len(test_answer))]
 lst=('','1','2','3','4','5')
 
@@ -78,7 +78,8 @@ for i in range(len(test_answer)):
 end_test = st.button('시험종료')
 
 if end_test:
-    timestamp2 = (datetime.now()).timestamp()
+    bbb = datetime.now()
+    timestamp2 = bbb.timestamp()
     correct = []
     incorrect = []
     sum1= 0
