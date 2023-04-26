@@ -28,6 +28,7 @@ if int(test_num) in list(df['시험고유번호']):
     start = st.button('시험시작')
 if start:
     timestamp1 = datetime.datetime.now()
+    stamp1 = timestamp1.timestamp()
 submit_answer = [num for num in range(len(test_answer))]
 lst=('','1','2','3','4','5')
 
@@ -90,7 +91,7 @@ if end_test:
             incorrect.append(i+1)
     if sum(jumsu)==sum1:
         st.header(f'참 잘 했습니다. :blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
-        st.write(timestamp2)
+        st.write(stamp1)
         remaintime = (timestamp2-timestamp1)/len(test_answer)
         st.write(remaintime)
     else:
