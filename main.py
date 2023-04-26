@@ -95,9 +95,11 @@ if end_test:
     else:
         st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
+    st.write(timestamp1)
+    st.write(timestamp2)
     remaintime = (timestamp2-timestamp1)/len(test_answer)
     timelist = [remaintime for i in range(len(test_answer))]
-    st.write(remaintime)
+    
     csv_file = 'take_exam_online.csv'
     if os.path.exists(csv_file):
         # read from file
