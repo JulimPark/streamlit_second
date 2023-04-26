@@ -32,9 +32,9 @@ lst=('','1','2','3','4','5')
 
 for i in range(len(test_answer)):
     if test_answer[i] in ['1','2','3','4','5']:
-        submit_answer[i] = st.radio(f':red[str(i+1)]번 문항의 정답을 입력하세요.',lst,index=0,horizontal=True)
+        submit_answer[i] = st.radio(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.',lst,index=0,horizontal=True)
     elif test_answer[i] in ['1,2','1,3','1,4','1,5','2,3','2,4','2,5','3,4','3,5','4,5']:
-        st.write(f':red[str(i+1)]번 문항의 정답을 입력하세요.')
+        st.write(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.')
         temp=[]
  
         checks = st.columns(5,gap="small")
@@ -70,7 +70,7 @@ for i in range(len(test_answer)):
                 pass    
         submit_answer[i] = ','.join(temp)
     else:
-        submit_answer[i] = st.text_input(f':red[str(i+1)]번 문항의 정답을 입력하세요.')
+        submit_answer[i] = st.text_input(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.')
     st.divider()
         
 end_test = st.button('시험종료')
