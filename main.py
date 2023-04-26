@@ -99,6 +99,7 @@ if end_test:
     else:
         st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
+    remaintime = 0
     remaintime = (timestamp2-timestamp1)/len(test_answer)
     timelist = [remaintime for i in range(len(test_answer))]
     take_day = f"{bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
