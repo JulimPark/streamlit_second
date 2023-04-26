@@ -21,10 +21,9 @@ if int(test_num) in list(df['시험고유번호']):
     df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
     test_answer = ast.literal_eval(df1.iat[0,5])
     test_answer = [str(i) for i in test_answer]
-    st.write('문항 수:',len(test_answer))
-    st.write(test_answer)
+    st.write('본 시험의 문항 수는',:green[len(test_answer)],'문항 입니다.)
     testname = df1.iat[0,1]
-    st.write(f'현재 시험지는 *:blue[{testname}] 입니다')
+    st.write(f'현재 시험지는 :blue[{testname}] 입니다')
     start = st.button('시험시작')
 if start:
     timestamp = datetime.datetime.now()
@@ -33,7 +32,7 @@ lst=('','1','2','3','4','5')
 
 for i in range(len(test_answer)):
     if test_answer[i] in ['1','2','3','4','5']:
-        submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',lst,index=0,horizontal=True)
+        submit_answer[i] = st.radio(:red[str(i+1)]+'번 문항의 정답을 입력하세요.',lst,index=0,horizontal=True)
     elif test_answer[i] in ['1,2','1,3','1,4','1,5','2,3','2,4','2,5','3,4','3,5','4,5']:
         st.write(str(i+1)+'번 문항의 정답을 입력하세요.')
         temp=[]
