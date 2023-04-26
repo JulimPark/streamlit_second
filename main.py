@@ -99,7 +99,7 @@ try:
             st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
         remaintime = (timestamp2-timestamp1)/len(test_answer)
         timelist = [remaintime for i in range(len(test_answer))]
-        take_day = f"{format(bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
+        take_day = f"{bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
         st.header(take_day)
         csv_file = 'take_exam_online.csv'
         if os.path.exists(csv_file):
