@@ -32,7 +32,7 @@ submit_answer = [num for num in range(len(test_answer))]
 lst=('','1','2','3','4','5')
 for i in range(len(test_answer)):
     if test_answer[i] in ['1','2','3','4','5']:
-        submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',lst,index=5,horizontal=True)
+        submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',lst,index=0,horizontal=True)
     elif test_answer[i] in ['1,2','1,3','1,4','1,5','2,3','2,4','2,5','3,4','3,5','4,5']:
         st.write(str(i+1)+'번 문항의 정답을 입력하세요.')
         temp=[]
