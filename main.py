@@ -83,6 +83,7 @@ end_test = st.button('시험종료')
 if end_test:
     bbb = datetime.now()
     timestamp2 = bbb.timestamp()
+    st.write(timestamp2)
     correct = []
     incorrect = []
     sum1= 0
