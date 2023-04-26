@@ -27,7 +27,7 @@ if int(test_num) in list(df['시험고유번호']):
     st.write(f'현재 시험지는 :blue[{testname}] 입니다')
     start = st.button('시험시작')
 if start:
-    timestamp = datetime.datetime.now()
+    timestamp1 = datetime.datetime.now()
 submit_answer = [num for num in range(len(test_answer))]
 lst=('','1','2','3','4','5')
 
@@ -77,9 +77,11 @@ for i in range(len(test_answer)):
 end_test = st.button('시험종료')
 
 if end_test:
+    timestamp2 = datetime.datetime.now()
     correct = []
     incorrect = []
     sum1= 0
+    
     for i in range(len(test_answer)):
         if submit_answer[i] == test_answer[i]:
             correct.append(i+1)
@@ -88,6 +90,9 @@ if end_test:
             incorrect.append(i+1)
     if sum(jumsu)==sum1:
         st.header(f'참 잘 했습니다. :blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
+        st.write(timestamp2-timestamp1)
+        remaintime = (timestamp2-timestamp1)/len(test_answer)
+        st.write(remaintime)
     else:
         st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
@@ -97,7 +102,7 @@ if end_test:
         ddf = pd.read_csv(csv_file, index_col=False)
     else:
         # create empty dataframe with the right columns & dtypes
-        data_dict2={'학생이름':[],'학생HP':[],'시험고유번호':[],'시험명':[],'점수':[],'학생답':[],'맞은문항':[],'틀린문항':[],'문항별응시시간(초)':[],'총응시시간(초)':[],'응시일':[],'응시번호':[]}
+        data_dict2={'학생이름':stu_name,'학생HP':0,'시험고유번호':test_num,'시험명':testname,'점수':sum1,'학생답':submit_answer,'맞은문항':correct,'틀린문항':incorrect,'문항별응시시간(초)':[],'총응시시간(초)':[],'응시일':[],'응시번호':[]}
         
         ddf = pd.DataFrame(
             {'time': np.array([]).astype('datetime64[ns]'),
@@ -123,4 +128,4 @@ if end_test:
         st.write('after')
         st.dataframe(results_option1)
     else:
-    st.markdown("Please submit to save")
+        st.markdown("Please submit to save")
