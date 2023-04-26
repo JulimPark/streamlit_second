@@ -23,6 +23,7 @@ st.write('현재 응시자는 '+stu_name+'입니다')
 test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
 if int(test_num) in list(df['시험고유번호']):
     df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
+    df1 = df1.astype({'정답':'int})
     st.write(df1)
     test_answer = ast.literal_eval(df1.iat[0,5])
     st.write('문항 수:',len(test_answer))
@@ -33,9 +34,9 @@ if int(test_num) in list(df['시험고유번호']):
         timestamp = datetime.datetime.now()
         submit_answer = [num for num in range(len(test_answer))]
         for i in range(len(test_answer)):
-            if int(test_answer[i]) in [1,2,3,4,5]:
+            if test_answer[i] in ['1','2','3','4','5']:
                 submit_answer[i] = st.radio(str(i+1)+'번 문항의 정답을 입력하세요.',('1','2','3','4','5'))
-            elif fnmatch.fnmatch(str(test_answer[i]),'*,*'):
+            elif fnmatch.fnmatch(test_answer[i],'*,*'):
                 st.write(str(i+1)+'번 문항의 정답을 입력하세요.')
                 a1 = st.checkbox(1)
                 a2 = st.checkbox(2)
