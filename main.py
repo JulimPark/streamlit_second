@@ -99,14 +99,15 @@ try:
             st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
         remaintime = (timestamp2-timestamp1)/len(test_answer)
         timelist = [remaintime for i in range(len(test_answer))]
-        st.write(timelist)
+        take_day = f"{format(bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
+        st.header(take_day)
         csv_file = 'take_exam_online.csv'
         if os.path.exists(csv_file):
             # read from file
             ddf = pd.read_csv(csv_file, index_col=False)
         else:
             # create empty dataframe with the right columns & dtypes
-            data_dict2={'학생이름':stu_name,'학생HP':0,'시험고유번호':test_num,'시험명':testname,'점수':sum1,'학생답':submit_answer,'맞은문항':correct,'틀린문항':incorrect,'문항별응시시간(초)':timelist,'총응시시간(초)':remaintime,'응시일':0,'응시번호':0}
+            data_dict2={'학생이름':stu_name,'학생HP':0,'시험고유번호':test_num,'시험명':testname,'점수':sum1,'학생답':submit_answer,'맞은문항':correct,'틀린문항':incorrect,'문항별응시시간(초)':timelist,'총응시시간(초)':remaintime,'응시일':take_day,'응시번호':0}
 
             
             
