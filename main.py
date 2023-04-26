@@ -37,51 +37,42 @@ for i in range(len(test_answer)):
     elif test_answer[i] in ['1,2','1,3','1,4','1,5','2,3','2,4','2,5','3,4','3,5','4,5']:
         st.write(str(i+1)+'번 문항의 정답을 입력하세요.')
         temp=[]
-#         a1 = st.checkbox('1')
-#         if a1==True:
-#             temp.append('1')
-#         else:
-#             pass
-#         a2 = st.checkbox('2')
-#         if a2==True:
-#             temp.append('2')
-#         else:
-#             pass
-#         a3 = st.checkbox('3')
-#         if a3==True:
-#             temp.append('3')
-#         else:
-#             pass
-#         a4 = st.checkbox('4')
-#         if a4==True:
-#             temp.append('4')
-#         else:
-#             pass
-#         a5 = st.checkbox('5')
-#         if a5==True:
-#             temp.append('5')
-#         else:
-#             pass    
+ 
         checks = st.columns(5)
         with checks[0]:
-            st.checkbox('1')
-            temp.append(checks[0])
+            a1 = st.checkbox('1')
+            if a1==True:
+                temp.append('1')
+            else:
+                pass
         with checks[1]:
-            st.checkbox('2')
-            temp.append(checks[1])
+           a2 = st.checkbox('2')
+            if a2==True:
+                temp.append('2')
+            else:
+                pass
         with checks[2]:
-            st.checkbox('3')
-            temp.append(checks[2])
+           a3 = st.checkbox('3')
+            if a3==True:
+                temp.append('3')
+            else:
+                pass
         with checks[3]:
-            st.checkbox('4')
-            temp.append(checks[3])
+           a4 = st.checkbox('4')
+            if a4==True:
+                temp.append('4')
+            else:
+                pass
         with checks[4]:
-            st.checkbox('5')
-            temp.append(checks[4])
+            a5 = st.checkbox('5')
+            if a5==True:    
+                temp.append('5')
+            else:
+                pass    
 #         submit_answer[i] = ','.join(temp)
     else:
         submit_answer[i] = st.text_input(str(i+1)+'번 문항의 정답을 입력하세요.')
-st.write(checks)
+        
 end_test = st.button('시험종료')
 
 if end_test:
