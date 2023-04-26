@@ -111,7 +111,7 @@ if end_test:
     else:
         # create empty dataframe with the right columns & dtypes
         data_dict2={'학생이름':[],'학생HP':[],'시험고유번호':[],'시험명':[],'점수':[],'학생답':[],'맞은문항':[],'틀린문항':[],'문항별응시시간(초)':[],'총응시시간(초)':[],'응시일':[],'응시번호':[]}
-        ddf = pd.DataFrame(data_dict2,index=[0])
+        ddf = pd.DataFrame(data_dict2)
     
     ddf.loc[len(ddf)] = [stu_name,0,test_num,testname,sum1,submit_answer,correct,incorrect,timelist,sum(timelist),take_day,0]
     st.dataframe(ddf)
