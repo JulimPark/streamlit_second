@@ -17,7 +17,7 @@ stu_name = st.text_input('*:blue[이름]을 입력하세요: ', '홍길동')
 st.write('현재 응시자는 '+stu_name+'입니다')
 
 test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
-df1 = df[df['시험고유번호']==test_num].loc[:,]
+df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
 st.write(df1)
 st.write('문항 수:',len(df1.iat[0,5]))
 testname = df1.iat[0,1]
