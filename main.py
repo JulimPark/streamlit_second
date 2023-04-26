@@ -8,7 +8,7 @@ import fnmatch
 
 st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
-
+df = df.astype({'정답':'str'})
 
 def test_start():
     st.write('시작')
@@ -23,7 +23,6 @@ st.write('현재 응시자는 '+stu_name+'입니다')
 test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
 if int(test_num) in list(df['시험고유번호']):
     df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
-    df1 = df1.astype({'정답':'int'})
     st.write(df1)
     test_answer = ast.literal_eval(df1.iat[0,5])
     st.write('문항 수:',len(test_answer))
