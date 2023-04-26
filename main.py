@@ -9,6 +9,8 @@ st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
 
 
+def test_start():
+    st.write('시작')
 
 st.title('수학클리닉:blue[🞧]필요와충분')
 
@@ -29,8 +31,6 @@ if int(test_num) in list(df['시험고유번호']):
 else:
     pass
 
-def test_start():
-    st.write('시작')
     
 # kk = test_code.index[(test_code['시험지코드']==int(test_num))]
 
