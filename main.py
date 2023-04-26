@@ -8,7 +8,6 @@ import ast
 
 st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
-df = df.astype({'정답':'str'})
 
 st.title('수학클리닉:blue[🞧]필요와충분')
 
@@ -20,9 +19,10 @@ st.write('현재 응시자는 '+stu_name+'입니다')
 test_num = st.text_input('*:red[시험지코드]를 입력하세요 ', '0001')
 if int(test_num) in list(df['시험고유번호']):
     df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
-    st.write(df1)
     test_answer = ast.literal_eval(df1.iat[0,5])
+    test_answer = [str(i) for i in test_answer]
     st.write('문항 수:',len(test_answer))
+    st.write(test_answer)
     testname = df1.iat[0,1]
     st.write(f'현재 시험지는 *:blue[{testname}] 입니다')
     start = st.button('시험시작')
