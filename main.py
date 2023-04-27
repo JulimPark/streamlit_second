@@ -29,98 +29,99 @@ if int(test_num) in list(df['시험고유번호']):
     start = st.button('시험시작')
 else:
     st.write('시험지에 기록된 시험지코드를 정확히 입력하세요.')
-if start:
-    aaa = datetime.now()
-    timestamp1 = aaa.timestamp()
-#     st.write(timestamp1)
-submit_answer = [num for num in range(len(test_answer))]
-lst=('','1','2','3','4','5')
-
-for i in range(len(test_answer)):
-    if test_answer[i] in ['1','2','3','4','5']:
-        submit_answer[i] = st.radio(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.',lst,index=0,horizontal=True)
-    elif test_answer[i] in ['1,2','1,3','1,4','1,5','2,3','2,4','2,5','3,4','3,5','4,5']:
-        st.write(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.')
-        temp=[]
-
-        checks = st.columns(5,gap="small")
-        with checks[0]:
-            a1 = st.checkbox('1')
-            if a1==True:
-                temp.append('1')
-            else:
-                pass
-        with checks[1]:
-            a2 = st.checkbox('2')
-            if a2==True:
-                temp.append('2')
-            else:
-                pass
-        with checks[2]:
-            a3 = st.checkbox('3')
-            if a3==True:
-                temp.append('3')
-            else:
-                pass
-        with checks[3]:
-            a4 = st.checkbox('4')
-            if a4==True:
-                temp.append('4')
-            else:
-                pass
-        with checks[4]:
-            a5 = st.checkbox('5')
-            if a5==True:    
-                temp.append('5')
-            else:
-                pass    
-        submit_answer[i] = ','.join(temp)
-    else:
-        submit_answer[i] = st.text_input(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.')
-    st.divider()
-
-end_test = st.button('시험종료')
-
-if end_test:
-    bbb = datetime.now()
-#     timestamp2 = bbb.timestamp()
-#     st.write(timestamp2)
-    correct = []
-    incorrect = []
-    sum1= 0
+try:
+    if start:
+        aaa = datetime.now()
+        timestamp1 = aaa.timestamp()
+    #     st.write(timestamp1)
+    submit_answer = [num for num in range(len(test_answer))]
+    lst=('','1','2','3','4','5')
 
     for i in range(len(test_answer)):
-        if submit_answer[i] == test_answer[i]:
-            correct.append(i+1)
-            sum1 = sum1+jumsu[i]
+        if test_answer[i] in ['1','2','3','4','5']:
+            submit_answer[i] = st.radio(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.',lst,index=0,horizontal=True)
+        elif test_answer[i] in ['1,2','1,3','1,4','1,5','2,3','2,4','2,5','3,4','3,5','4,5']:
+            st.write(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.')
+            temp=[]
+
+            checks = st.columns(5,gap="small")
+            with checks[0]:
+                a1 = st.checkbox('1')
+                if a1==True:
+                    temp.append('1')
+                else:
+                    pass
+            with checks[1]:
+                a2 = st.checkbox('2')
+                if a2==True:
+                    temp.append('2')
+                else:
+                    pass
+            with checks[2]:
+                a3 = st.checkbox('3')
+                if a3==True:
+                    temp.append('3')
+                else:
+                    pass
+            with checks[3]:
+                a4 = st.checkbox('4')
+                if a4==True:
+                    temp.append('4')
+                else:
+                    pass
+            with checks[4]:
+                a5 = st.checkbox('5')
+                if a5==True:    
+                    temp.append('5')
+                else:
+                    pass    
+            submit_answer[i] = ','.join(temp)
         else:
-            incorrect.append(i+1)
-    if sum(jumsu)==sum1:
-        st.header(f'참 잘 했습니다. :blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
-    else:
-        st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
-        st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
-#     remaintime = (timestamp2-timestamp1)
-#     st.write(remaintime)
-#     remaintime = (timestamp2-timestamp1)/len(test_answer)
-    timelist = [60 for i in range(len(test_answer))]
-    take_day = f"{bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
-    csv_file = 'take_exam_online.csv'
-    if os.path.exists(csv_file):
-        # read from file
-        ddf = pd.read_csv(csv_file, index_col=False)
-    else:
-        # create empty dataframe with the right columns & dtypes
-        data_dict2={'학생이름':[],'학생HP':[],'시험고유번호':[],'시험명':[],'점수':[],'학생답':[],'맞은문항':[],'틀린문항':[],'문항별응시시간(초)':[],'총응시시간(초)':[],'응시일':[],'응시번호':[]}
-        ddf = pd.DataFrame(data_dict2)
-    
-    ddf.loc[len(ddf['학생이름'])] = [stu_name,0,test_num,testname,sum1,str(submit_answer),str(correct),str(incorrect),str(timelist),sum(timelist),take_day,0]
-    st.dataframe(ddf)
-    ddf.to_csv(csv_file, index=False)
+            submit_answer[i] = st.text_input(f':red[{str(i+1)}]번 문항의 정답을 입력하세요.')
+        st.divider()
+
+    end_test = st.button('시험종료')
+
+    if end_test:
+        bbb = datetime.now()
+    #     timestamp2 = bbb.timestamp()
+    #     st.write(timestamp2)
+        correct = []
+        incorrect = []
+        sum1= 0
+
+        for i in range(len(test_answer)):
+            if submit_answer[i] == test_answer[i]:
+                correct.append(i+1)
+                sum1 = sum1+jumsu[i]
+            else:
+                incorrect.append(i+1)
+        if sum(jumsu)==sum1:
+            st.header(f'참 잘 했습니다. :blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
+        else:
+            st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
+            st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
+    #     remaintime = (timestamp2-timestamp1)
+    #     st.write(remaintime)
+    #     remaintime = (timestamp2-timestamp1)/len(test_answer)
+        timelist = [60 for i in range(len(test_answer))]
+        take_day = f"{bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
+        csv_file = 'take_exam_online.csv'
+        if os.path.exists(csv_file):
+            # read from file
+            ddf = pd.read_csv(csv_file, index_col=False)
+        else:
+            # create empty dataframe with the right columns & dtypes
+            data_dict2={'학생이름':[],'학생HP':[],'시험고유번호':[],'시험명':[],'점수':[],'학생답':[],'맞은문항':[],'틀린문항':[],'문항별응시시간(초)':[],'총응시시간(초)':[],'응시일':[],'응시번호':[]}
+            ddf = pd.DataFrame(data_dict2)
+
+        ddf.loc[len(ddf['학생이름'])] = [stu_name,0,test_num,testname,sum1,str(submit_answer),str(correct),str(incorrect),str(timelist),sum(timelist),take_day,0]
+        st.dataframe(ddf)
+        ddf.to_csv(csv_file, index=False)
 
 
-# except:
-#     pass
+except:
+    pass
 # ddf = pd.DataFrame(
 #     {'time': np.array([]).astype('datetime64[ns]'),
 #      'Primary Air Flow Rate': np.array([], dtype=np.float64),
