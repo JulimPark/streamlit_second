@@ -143,7 +143,7 @@ try:
             data=csv,
             file_name='take_exam_online.csv',
             mime='text/csv')
-     else:
+    else:
         pass
 except:
     pass
