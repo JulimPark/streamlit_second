@@ -4,7 +4,8 @@ import os
 import numpy as np
 from datetime import datetime
 import ast
-
+if 'user_name' not in st.session_state:
+    st.session_state['user_name'] = ''
 st.session_state['user_name']
 st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
