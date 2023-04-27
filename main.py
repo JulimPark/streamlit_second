@@ -28,7 +28,7 @@ if int(test_num) in list(df['시험고유번호']):
     st.write(f'현재 시험지는 :blue[{testname}] 입니다')
     start = st.button('시험시작')
 else:
-    st.write('시험지에 기록된 시험지코드를 정확히 입력하세요.)
+    st.write('시험지에 기록된 시험지코드를 정확히 입력하세요.')
 if start:
     aaa = datetime.now()
     timestamp1 = aaa.timestamp()
