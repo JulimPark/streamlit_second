@@ -16,7 +16,7 @@ st.header('정답제출 시스템')
 stu_name = st.text_input('*:blue[이름]을 입력하세요: ', '홍길동')
 st.write('현재 응시자는 '+stu_name+'입니다')
 
-test_num = st.text_input('*:red[시험지코드]를 입력하세요 ')
+test_num = st.text_input('*:red[시험지코드]를 입력하세요 ','0001')
 # try:
 if int(test_num) in list(df['시험고유번호']):
     df1 = df[df['시험고유번호']==int(test_num)].loc[:,]
@@ -27,7 +27,8 @@ if int(test_num) in list(df['시험고유번호']):
     testname = df1.iat[0,1]
     st.write(f'현재 시험지는 :blue[{testname}] 입니다')
     start = st.button('시험시작')
-
+else:
+    st.write('시험지에 기록된 시험지코드를 정확히 입력하세요.)
 if start:
     aaa = datetime.now()
     timestamp1 = aaa.timestamp()
