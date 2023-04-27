@@ -135,17 +135,17 @@ try:
             label="Download data as CSV",
             data=csv,
             file_name='take_exam_online.csv',
-            mime='text/csv',disabled=True)
+            mime='text/csv')
 except:
     pass
 try:
     through_pass = st.text_input('*:blue[download password]를 입력하세요')
     
         
-    if through_pass == 'asdffdsa':
-        aas.disabled = False
+    if through_pass != 'asdffdsa':
+        aas.disabled=True
     else:
-        pass
+        aas.disabled=False
 except:
     pass
 #     st.write("???")
