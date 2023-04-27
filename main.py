@@ -131,19 +131,23 @@ try:
         st.dataframe(ddf)
         ddf.to_csv(csv_file, index=False)
         csv = convert_df(ddf)
-       
+        aas = st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='take_exam_online.csv',
+            mime='text/csv',disabled=False)
 except:
     pass
 try:
     through_pass = st.text_input('*:blue[download password]를 입력하세요')
     
     if through_pass == 'asdffdsa':
-        st.write(through_pass == 'asdffdsa')
-        st.download_button(
+        aas = st.download_button(
             label="Download data as CSV",
             data=csv,
             file_name='take_exam_online.csv',
-            mime='text/csv')
+            mime='text/csv',disabled=False)
+        
     else:
         pass
 except:
