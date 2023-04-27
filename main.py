@@ -34,7 +34,8 @@ try:
         aaa = datetime.now()
         timestamp1 = aaa.timestamp()
         temp_dict = {'시작시간':timestamp1}
-        temp_csv = pd.to_csv(pd.DataFrame(temp_dict))
+        df11 = pd.DataFrame(temp_dict)
+        df11.to_csv('temp_csv.csv',index=False)
     submit_answer = [num for num in range(len(test_answer))]
     lst=('','1','2','3','4','5')
 
@@ -85,8 +86,10 @@ try:
 
     if end_test:
         bbb = datetime.now()
-    #     timestamp2 = bbb.timestamp()
-    #     st.write(timestamp2)
+        timestamp2 = bbb.timestamp()
+        df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
+        timestamp11 = df12.iat[0,0]
+        st.write(timestamp2-timestamp11)
         correct = []
         incorrect = []
         sum1= 0
