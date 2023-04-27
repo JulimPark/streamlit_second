@@ -128,6 +128,12 @@ try:
 
 except:
     pass
+st.download_button(
+    label="Download data as CSV",
+    data=csv,
+    file_name='take_exam_online.csv',
+    mime='text/csv',
+)
 #     st.write("???")
 # ddf = pd.DataFrame(
 #     {'time': np.array([]).astype('datetime64[ns]'),
