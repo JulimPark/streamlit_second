@@ -125,11 +125,11 @@ try:
         st.dataframe(ddf)
         ddf.to_csv(csv_file, index=False)
 
-    st.download_button(
-        label="Download data as CSV",
-        data=csv,
-        file_name='take_exam_online.csv',
-        mime='text/csv',
+        st.download_button(
+            label="Download data as CSV",
+            data=csv,
+            file_name='take_exam_online.csv',
+            mime='text/csv',
 except:
     pass
 
