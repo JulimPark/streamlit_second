@@ -33,7 +33,8 @@ try:
     if start:
         aaa = datetime.now()
         timestamp1 = aaa.timestamp()
-    #     st.write(timestamp1)
+        temp_dict = {'시작시간':timestamp1}
+        temp_csv = pd.to_csv(pd.DataFrame(temp_dict))
     submit_answer = [num for num in range(len(test_answer))]
     lst=('','1','2','3','4','5')
 
