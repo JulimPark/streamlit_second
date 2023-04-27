@@ -136,7 +136,7 @@ except:
     pass
 try:
     through_pass = st.text_input('*:blue[download password]를 입력하세요')
-    st.write(through_pass)
+    st.write(through_pass == 'asdffdsa')
     if through_pass == 'asdffdsa':
          st.download_button(
             label="Download data as CSV",
