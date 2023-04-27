@@ -26,6 +26,7 @@ if int(test_num) in list(df['시험고유번호']):
     st.subheader(f'본 시험의 문항 수는 :green[{len(test_answer)}]문항 입니다.')
     testname = df1.iat[0,1]
     st.subheader(f'현재 시험지는 :blue[{testname}] 입니다')
+    st.subheader(f':red[시험시작 버튼을 눌러야 풀이시간 측정이 가능합니다.]')
     start = st.button('시험시작')
 else:
     st.write('시험지에 기록된 시험지코드를 정확히 입력하세요.')
@@ -107,7 +108,7 @@ if end_test:
     else:
         st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
-        st.header(f'풀이 소요시간은 :orange[{remaintime}]입니다.')
+        st.header(f'풀이 소요시간은 :orange[{remaintime}]초 입니다.')
 
     csv_file = 'take_exam_online.csv'
     if os.path.exists(csv_file):
