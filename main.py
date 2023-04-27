@@ -23,9 +23,9 @@ if int(test_num) in list(df['시험고유번호']):
     test_answer = ast.literal_eval(df1.iat[0,5])
     jumsu = ast.literal_eval(df1.iat[0,6])
     test_answer = [str(i) for i in test_answer]
-    st.write(f'본 시험의 문항 수는 :green[{len(test_answer)}]문항 입니다.')
+    st.subheader(f'본 시험의 문항 수는 :green[{len(test_answer)}]문항 입니다.')
     testname = df1.iat[0,1]
-    st.write(f'현재 시험지는 :blue[{testname}] 입니다')
+    st.subheader(f'현재 시험지는 :blue[{testname}] 입니다')
     start = st.button('시험시작')
 else:
     st.write('시험지에 기록된 시험지코드를 정확히 입력하세요.')
