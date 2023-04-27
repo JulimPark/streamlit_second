@@ -140,7 +140,7 @@ try:
             label="Download data as CSV",
             data=csv,
             file_name='take_exam_online.csv',
-            mime='text/csv',disabled=False)
+            mime='text/csv',disabled=True)
         
     if through_pass == 'asdffdsa':
         aas.disabled = False
