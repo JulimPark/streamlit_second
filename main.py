@@ -125,7 +125,7 @@ try:
 
 
 except:
-    pass
+    st.write("???")
 # ddf = pd.DataFrame(
 #     {'time': np.array([]).astype('datetime64[ns]'),
 #      'Primary Air Flow Rate': np.array([], dtype=np.float64),
