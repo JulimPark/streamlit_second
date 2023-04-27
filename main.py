@@ -93,7 +93,9 @@ if end_test:
     correct = []
     incorrect = []
     sum1= 0
-
+    remaintime = round((timestamp2-timestamp11)/len(test_answer),2)
+    timelist = [remaintime for i in range(len(test_answer))]
+    take_day = f"{bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
     for i in range(len(test_answer)):
         if submit_answer[i] == test_answer[i]:
             correct.append(i+1)
@@ -105,9 +107,8 @@ if end_test:
     else:
         st.header(f':blue[시험고유번호 {test_num}]의 점수는 :red[{sum1}점] 입니다.')
         st.header(f'틀린 문항의 번호는 :green[{incorrect}]입니다.')
-    remaintime = round((timestamp2-timestamp11)/len(test_answer),2)
-    timelist = [remaintime for i in range(len(test_answer))]
-    take_day = f"{bbb.year}/{format(bbb.month,'02')}/{format(bbb.day,'02')}"
+        st.header(f'풀이 소요시간은 :purple[{remaintime}]입니다.')
+
     csv_file = 'take_exam_online.csv'
     if os.path.exists(csv_file):
         # read from file
