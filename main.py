@@ -131,16 +131,16 @@ try:
         st.dataframe(ddf)
         ddf.to_csv(csv_file, index=False)
         csv = convert_df(ddf)
-        
-except:
-    pass
-try:
-    through_pass = st.text_input('*:blue[download password]를 입력하세요')
-    aas = st.download_button(
+        aas = st.download_button(
             label="Download data as CSV",
             data=csv,
             file_name='take_exam_online.csv',
             mime='text/csv',disabled=True)
+except:
+    pass
+try:
+    through_pass = st.text_input('*:blue[download password]를 입력하세요')
+    
         
     if through_pass == 'asdffdsa':
         aas.disabled = False
