@@ -5,7 +5,7 @@ import numpy as np
 from datetime import datetime
 import ast
 
-
+st.session_state['user_name']
 st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
 
