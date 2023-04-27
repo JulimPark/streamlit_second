@@ -129,11 +129,10 @@ try:
             label="Download data as CSV",
             data=csv,
             file_name='take_exam_online.csv',
-            mime='text/csv',
+            mime='text/csv')
 except:
     pass
 
-)
 #     st.write("???")
 # ddf = pd.DataFrame(
 #     {'time': np.array([]).astype('datetime64[ns]'),
