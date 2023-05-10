@@ -128,7 +128,7 @@ try:
             ddf = pd.DataFrame(data_dict2)
 
         ddf.loc[len(ddf['학생이름'])] = [stu_name,0,test_num,testname,sum1,str(submit_answer),str(correct),str(incorrect),str(timelist),sum(timelist),take_day,0]
-        st.dataframe(ddf)
+#         st.dataframe(ddf)
         ddf.to_csv(csv_file, index=False)
         csv = convert_df(ddf)
         aas = st.download_button(
