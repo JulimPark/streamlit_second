@@ -10,21 +10,21 @@ from google.oauth2 import service_account
 
 # Authenticate to Firestore with the JSON account key.
 import json
-key_dict = json.loads(st.secrets["textkey"])
-creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="test-project-6e03a")
-# Create a reference to the Google post.
-doc_ref = db.collection("test").document("take_exam_data")
+# key_dict = json.loads(st.secrets["textkey"])
+# creds = service_account.Credentials.from_service_account_info(key_dict)
+# db = firestore.Client(credentials=creds, project="test-project-6e03a")
+# # Create a reference to the Google post.
+# doc_ref = db.collection("test").document("take_exam_data")
 
-# Then get the data at that reference.
-doc = doc_ref.get()
+# # Then get the data at that reference.
+# doc = doc_ref.get()
 
-# Let's see what we got!
-st.write("The id is: ", doc.id)
-st.write("The contents are: ", doc.to_dict())
+# # Let's see what we got!
+# st.write("The id is: ", doc.id)
+# st.write("The contents are: ", doc.to_dict())
 
 
-st.write("hello!~~bye!!!")
+# st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
 
 st.title('수학클리닉:blue[+]필요와충분')
@@ -139,10 +139,10 @@ try:
             ddf = pd.DataFrame(data_dict2)
         db2 = firestore.Client(credentials=creds, project="test-project-6e03a")
         # Create a reference to the Google post.
-        doc_ref2 = db2.collection("test").document("take_exam_data")
+        doc_ref2 = db2.collection("test").document(str(datetime.now())
         doc_ref2.push({'학생이름':stu_name,'학생HP':0,'시험고유번호':test_num,'시험명':testname,'점수':sum1,'학생답':str(submit_answer),'맞은문항':str(correct),'틀린문항':str(incorrect),'문항별응시시간(초)':str(timelist),
                      '총응시시간(초)':sum(timelist),'응시일':take_day,'응시번호':0,'분류코드':1})
-        ddf.loc[len(ddf['학생이름'])] = [stu_name,0,test_num,testname,sum1,str(submit_answer),str(correct),str(incorrect),str(timelist),sum(timelist),take_day,0]
+        ddf.loc[len(ddf['학생이름'])] = [stu_name,0,test_num,testname,sum1,str(submit_answer),str(correct),str(incorrect),str(timelist),sum(timelist),take_day,str(df1.iat[0,12])]
 #         st.dataframe(ddf)
         ddf.to_csv(csv_file, index=False)
         csv = convert_df(ddf)
