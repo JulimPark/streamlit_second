@@ -4,24 +4,23 @@ import os
 import numpy as np
 from datetime import datetime
 import ast
-#######
-#|
-st.write("DB username:", st.secrets["db_username"])
-st.write("DB password:", st.secrets["db_password"])
-st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
 
-# And the root-level secrets are also accessible as environment variables:
+from google.cloud import firestore
 
-st.write(
-	"Has environment variables been set:",
-	os.environ["db_username"] == st.secrets["db_username"])
+# Authenticate to Firestore with the JSON account key.
+db = firestore.Client.from_service_account_json("fire.json")
 
-@st.cache
-def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode('utf-8')
-#|
-##########
+# Create a reference to the Google post.
+doc_ref = db.collection("test").document("take_exam_data")
+
+# Then get the data at that reference.
+doc = doc_ref.get()
+
+# Let's see what we got!
+st.write("The id is: ", doc.id)
+st.write("The contents are: ", doc.to_dict())
+
+
 st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
 
