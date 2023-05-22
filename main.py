@@ -4,15 +4,24 @@ import os
 import numpy as np
 from datetime import datetime
 import ast
+#######
+#|
+st.write("DB username:", st.secrets["db_username"])
+st.write("DB password:", st.secrets["db_password"])
+st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
 
+# And the root-level secrets are also accessible as environment variables:
 
+st.write(
+	"Has environment variables been set:",
+	os.environ["db_username"] == st.secrets["db_username"])
 
 @st.cache
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
-
-
+#|
+##########
 st.write("hello!~~bye!!!")
 df = pd.DataFrame(pd.read_csv('./exam_data.csv'))
 
