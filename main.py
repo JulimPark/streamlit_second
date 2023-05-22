@@ -142,7 +142,7 @@ try:
         doc_ref2 = db2.collection("test").document(str(datetime.now()))
         doc_ref2.set({'학생이름':stu_name,'학생HP':0,'시험고유번호':test_num,'시험명':testname,'점수':sum1,'학생답':str(submit_answer),'맞은문항':str(correct),'틀린문항':str(incorrect),'문항별응시시간(초)':str(timelist),
                      '총응시시간(초)':sum(timelist),'응시일':take_day,'응시번호':0,'분류코드':str(df1.iat[0,11])})
-        ddf.loc[len(ddf['학생이름'])] = [stu_name,0,test_num,testname,sum1,str(submit_answer),str(correct),str(incorrect),str(timelist),sum(timelist),take_day,1]
+        ddf.loc[len(ddf['학생이름'])] = [stu_name,0,test_num,testname,sum1,str(submit_answer),str(correct),str(incorrect),str(timelist),format(sum(timelist),'02'),take_day,1]
     #         st.dataframe(ddf)
         ddf.to_csv(csv_file, index=False)
         csv = convert_df(ddf)
