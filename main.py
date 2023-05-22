@@ -12,7 +12,7 @@ from google.oauth2 import service_account
 import json
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="test project")
+db = firestore.Client(credentials=creds, project="test-project-6e03a")
 # Create a reference to the Google post.
 doc_ref = db.collection("test").document("take_exam_data")
 
