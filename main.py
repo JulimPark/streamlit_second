@@ -6,6 +6,7 @@ from datetime import datetime
 import ast
 
 from google.cloud import firestore
+from google.oauth2 import service_account
 
 # Authenticate to Firestore with the JSON account key.
 import json
