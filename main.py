@@ -153,6 +153,17 @@ try:
 #             mime='text/csv')
 except:
     pass
+
+
+
+
+hide_streamlit_style = """
+            <style>
+            [data-testid="stToolbar"] {visibility: hidden !important;}
+            footer {visibility: hidden !important;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 # try:
 #     through_pass = st.text_input('*:blue[download password]를 입력하세요')
     
